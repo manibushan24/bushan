@@ -66,4 +66,24 @@ The results obtained from the primary query are not in turn tested again.
 
 #	AUTOMATED TESTING
 
-test
+Below are the scenarios 
+1.Test With Invalid Parameters
+ url=https://api.nasa.gov/planetary/sounds?q=xyz&api_key=Test&limit=abc
+
+2.Test With Valid Parameters
+url=https://api.nasa.gov/planetary/sounds?q=AllMissions&api_key=DEMO_KEY&limit=20
+
+3.Test With SearchText
+url=https://api.nasa.gov/planetary/sounds?q=apollo
+
+4.Test With SearchText And Limit
+url=https://api.nasa.gov/planetary/sounds?q=apollo&limit=50
+
+5.Test With All Three Parameters
+url=https://api.nasa.gov/planetary/sounds?q=apollo&api_key=DEMO_KEY&limit=70
+
+6.Test With ApiKey And Limit Parameters
+url=https://api.nasa.gov/planetary/sounds?api_key=DEMO_KEY&limit=70
+
+7.Test With ApiKey And SearchParameters
+url=https://api.nasa.gov/planetary/sounds?q=apollo&api_key=DEMO_KEY
