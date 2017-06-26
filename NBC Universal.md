@@ -85,5 +85,5 @@ url=https://api.nasa.gov/planetary/sounds?q=apollo&api_key=DEMO_KEY&limit=70
 6.Test With ApiKey And Limit Parameters
 url=https://api.nasa.gov/planetary/sounds?api_key=DEMO_KEY&limit=70
 
-7.Test With ApiKey And SearchParameters
+7.Test With ApiKey And Search Parameters
 url=https://api.nasa.gov/planetary/sounds?q=apollo&api_key=DEMO_KEY
