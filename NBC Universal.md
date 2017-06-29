@@ -22,9 +22,10 @@ Parameter |	Type | Default | Description
 --------- | ---- | ------- | ------------
 q | string | None | Search text to filter results
 limit | int | 10 | number of tracks to return
-api_key | string | DEMO_KEY | api.nasa.gov key for expanded usage
+#api_key | string | DEMO_KEY | api.nasa.gov key for expanded usage
 
 EXAMPLE 	QUERY
+
 
 https://api.nasa.gov/planetary/sounds?q=apollo&api_key=DEMO_KEY
 
@@ -66,24 +67,104 @@ The results obtained from the primary query are not in turn tested again.
 
 #	AUTOMATED TESTING
 
-Below are the scenarios 
-1.Test With Invalid Parameters
- url=https://api.nasa.gov/planetary/sounds?q=xyz&api_key=Test&limit=abc
+Below are Positive and Negative test cases covered in Automation testing. Responses for each test data is captured, only response code is logged for failed test cases. Response code and response are captured and printed in the log for positive test cases.
 
-2.Test With Valid Parameters
+###  Negative Test cases:
+
+Query with q = Null
+
+https://api.nasa.gov/planetary/sounds?q=
+
+Query with q = Meaningful String
+
+https://api.nasa.gov/planetary/sounds?q=apollo
+
+Query with q = Invalid String
+
+url=https://api.nasa.gov/planetary/sounds?q=xyz
+
+Query with q = Integer
+
+url=https://api.nasa.gov/planetary/sounds?q=123
+
+Query without q(field/parameter) - String
+
+url=https://api.nasa.gov/planetary/sounds?api_key=DEMO_KEY&limit=20
+
+Query with limit - As int
+
+url=https://api.nasa.gov/planetary/sounds?limit=20
+
+Query with limit - As 0
+
+url=https://api.nasa.gov/planetary/sounds?limit=0
+
+Query with limit - As -1
+
+url=https://api.nasa.gov/planetary/sounds?limit=-1
+
+Query with limit - As 1
+
+url=https://api.nasa.gov/planetary/sounds?limit=1
+
+Query with limit - As 10
+
+url=https://api.nasa.gov/planetary/sounds?limit=10
+
+Query with limit - As 100
+
+url=https://api.nasa.gov/planetary/sounds?limit=100
+
+Query with limit - As 101
+
+url=https://api.nasa.gov/planetary/sounds?limit=101
+
+Query with limit - As String
+
+url=https://api.nasa.gov/planetary/sounds?limit=abc
+
+Query without api_key field/parameter
+
+url=https://api.nasa.gov/planetary/sounds?q=AllMissions&limit=20
+
+Query with api_key = DEMO_KEY
+
+url=https://api.nasa.gov/planetary/sounds?api_key=DEMO_KEY
+
+Query with api_key = Null
+
+url=https://api.nasa.gov/planetary/sounds?api_key=
+
+Query with api_key = Invalid String
+
+url=https://api.nasa.gov/planetary/sounds?api_key=DEMO_KEYasdf
+
+Query with api_key = Integer
+
+url=https://api.nasa.gov/planetary/sounds?api_key=123
+
+Query with api_key = "" or ""="" -- Sql Injection
+
+url=https://api.nasa.gov/planetary/sounds?api_key=""
+
+Query with api_key = 1=1 -- Sql Injection
+
+url=https://api.nasa.gov/planetary/sounds?api_key="1=1"
+
+Test With Invalid Parameters
+
+url=https://api.nasa.gov/planetary/sounds?q=xyz&api_key=Test&limit=abc
+
+### Positive Test Cases:
+
+Query without limit(field/parameter)
+
+url=https://api.nasa.gov/planetary/sounds?q=AllMissions&api_key=DEMO_KEY
+
+Test With Valid Parameters
+
 url=https://api.nasa.gov/planetary/sounds?q=AllMissions&api_key=DEMO_KEY&limit=20
 
-3.Test With SearchText
-url=https://api.nasa.gov/planetary/sounds?q=apollo
+Test With All Three Parameters
 
-4.Test With SearchText And Limit
-url=https://api.nasa.gov/planetary/sounds?q=apollo&limit=50
-
-5.Test With All Three Parameters
-url=https://api.nasa.gov/planetary/sounds?q=apollo&api_key=DEMO_KEY&limit=70
-
-6.Test With ApiKey And Limit Parameters
-url=https://api.nasa.gov/planetary/sounds?api_key=DEMO_KEY&limit=70
-
-7.Test With ApiKey And Search Parameters
-url=https://api.nasa.gov/planetary/sounds?q=apollo&api_key=DEMO_KEY
+url=https://api.nasa.gov/planetary/sounds?q=apollo&api_key=DEMO_KEY&limit=70 
